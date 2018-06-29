@@ -1,10 +1,11 @@
-from django.db import models
+'''modes'''
+import datetime
 from django.db import models
 from django.utils import timezone
-import datetime
 
 
 class Question(models.Model):
+    '''QuestionModel'''
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
 
@@ -12,11 +13,13 @@ class Question(models.Model):
         return self.question_text
 
     def was_published_recently(self):
+        '''return if published recently '''
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 
 class Choice(models.Model):
+    '''ChoiceModel'''
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)

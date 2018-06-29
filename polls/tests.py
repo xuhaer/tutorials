@@ -1,9 +1,10 @@
+'''test model'''
 import datetime
 
-from .models import Question
 from django.test import TestCase
 from django.utils import timezone
 from django.urls import reverse
+from .models import Question
 
 
 def create_question(question_text, days):
@@ -17,7 +18,7 @@ def create_question(question_text, days):
 
 
 class QuestionModelTests(TestCase):
-
+    '''QuestionModelTests'''
     def test_was_published_recently_with_future_question(self):
         """
         was_published_recently() returns False for questions whose pub_date
@@ -47,6 +48,7 @@ class QuestionModelTests(TestCase):
 
 
 class QuestionIndexViewTests(TestCase):
+    '''QuestionIndexViewTests'''
     def test_no_questions(self):
         """
         If no questions exist, an appropriate message is displayed.
@@ -105,6 +107,7 @@ class QuestionIndexViewTests(TestCase):
 
 
 class QuestionDetailViewTests(TestCase):
+    '''QuestionDetailViewTests'''
     def test_future_question(self):
         """
         The detail view of a question with a pub_date in the future
