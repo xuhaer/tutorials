@@ -16,6 +16,7 @@ class Question(models.Model):
         '''return if published recently '''
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
+    #方法上的admin_order_field指可以对某个方法按某字段排序，表现为在Admin中`PUBLISHED RECENTLY?` 列可点击使其排序
     was_published_recently.admin_order_field = 'pub_date'
     was_published_recently.boolean = True
     was_published_recently.short_description = 'Published recently?'
