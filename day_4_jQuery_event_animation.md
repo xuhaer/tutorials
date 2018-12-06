@@ -7,18 +7,13 @@
 * 鼠标事件
 
   * click: 鼠标单击时触发；
-
   * dblclick：鼠标双击时触发；
-
-  * mouseenter：鼠标进入时触发；
-
+  * mouseenter：鼠标进入时触发；(类似css的mouseover)
   * mouseleave：鼠标移出时触发；
-
   * mousemove：鼠标在DOM内部移动时触发；
-
   * hover：鼠标进入和退出时触发两个函数，相当于mouseenter加上mouseleave。
 
-    ​
+  ​
 
 * 键盘事件
 
@@ -42,7 +37,16 @@
 
   其中，`ready`仅作用于`document`对象。由于`ready`事件在DOM完成初始化后触发，且只触发一次，所以非常适合用来写其他的初始化代码。
 
-  ​
+* 补充:`焦点`：使浏览器能够区分用户输入的对象，当一个元素有焦点的时候，那么他就可以接收用户的输入，只有能够响应用户操作额元素才可以接收焦点事件，比如：a button input...
+
+  * onfocus：当元素获取到焦点的时候触发: [例子](https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onfocus)
+
+  * onblur:当元素失去焦点的时候
+
+  * obj.focus():给指定的元素设置焦点: [例子](https://www.w3schools.com/cssref/tryit.asp?filename=trycss_sel_focus)
+
+    ​
+
 
 * 事件参数
 
