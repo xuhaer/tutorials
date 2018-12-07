@@ -30,7 +30,7 @@ x.style.color='red'
   ```js
   x = 5
   == #等于 x==5 为true, x=='5'为true
-  === #全等(值、类型) x===5为true, x==='5'为fals
+  === #全等(值、类型) x===5为true, x==='5'为false
   ```
   ​
 
