@@ -37,4 +37,4 @@ bin
 *.bak
 
 
-launch.json
+.vscode/*

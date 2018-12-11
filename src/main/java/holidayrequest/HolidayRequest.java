@@ -22,10 +22,15 @@ public class HolidayRequest {
 
   public static void main(String[] args) {
     ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
-      .setJdbcUrl("jdbc:h2:mem:flowable;DB_CLOSE_DELAY=-1")
-      .setJdbcUsername("sa")
-      .setJdbcPassword("")
-      .setJdbcDriver("org.h2.Driver")
+      // 使用mysql数据库
+      // .setJdbcUrl("jdbc:h2:mem:flowable;DB_CLOSE_DELAY=-1")
+      // .setJdbcUsername("sa")
+      // .setJdbcPassword("")
+      // .setJdbcDriver("org.h2.Driver")
+      .setJdbcDriver("com.mysql.jdbc.Driver")
+      .setJdbcUrl("jdbc:mysql://127.0.0.1:3306/flowable")
+      .setJdbcUsername("root")
+      .setJdbcPassword("123321")
       .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
 
     ProcessEngine processEngine = cfg.buildProcessEngine();
