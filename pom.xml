@@ -20,7 +20,7 @@
   	<dependency>
      <groupId>org.flowable</groupId>
     	<artifactId>flowable-engine</artifactId>
-    	<version>6.3.0</version>
+    	<version>6.4.0</version>
   	</dependency>
 		<dependency>
 			<!-- <groupId>com.h2database</groupId>
@@ -48,7 +48,7 @@
 	<dependency>
 		<groupId>org.flowable</groupId>
 		<artifactId>flowable-http</artifactId>
-		<version>6.2.1</version>
+		<version>6.4.0</version>
 	</dependency>
 	<!-- Thanks for using https://jar-download.com -->
 

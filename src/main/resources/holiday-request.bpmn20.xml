@@ -20,14 +20,14 @@
 
     <exclusiveGateway id="decision"/>
     <sequenceFlow sourceRef="decision" targetRef="externalSystemCall">
-      <conditionExpression xsi:type="tFormalExpression">
+      <conditionExpression>
         <![CDATA[
           ${approved}
         ]]>
       </conditionExpression>
     </sequenceFlow>
     <sequenceFlow  sourceRef="decision" targetRef="rejectEnd">
-      <conditionExpression xsi:type="tFormalExpression">
+      <conditionExpression>
         <![CDATA[
           ${!approved}
         ]]>
@@ -51,10 +51,39 @@
         </flowable:field>
       </extensionElements>
     </serviceTask>
-    <sequenceFlow sourceRef="HttpGet" targetRef="approveEnd"/>
+    <sequenceFlow sourceRef="HttpGet" targetRef="HttpGetResult"/>
+
+    <exclusiveGateway id="HttpGetResult"/>
+    <sequenceFlow sourceRef="HttpGetResult" targetRef="ShellTask">
+      <conditionExpression>
+      <!-- 官方文档有误, 非taskId.property -->
+        <![CDATA[
+          ${HttpGetResponseStatusCode==200}
+        ]]>
+      </conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow  sourceRef="HttpGetResult" targetRef="HttpFailEnd">
+      <conditionExpression>
+        <![CDATA[
+          ${HttpGetResponseStatusCode != 200}
+        ]]>
+      </conditionExpression>
+    </sequenceFlow>
+
+    <serviceTask id="ShellTask" flowable:type="shell">
+      <extensionElements>
+        <flowable:field name="command" stringValue="bash" />
+        <!-- 可看到根路径创建了BashTaskDir文件夹 -->
+        <flowable:field name="arg1" stringValue="/Users/har/py/git/FlowableTutorial/BashTaskTest.sh"/>
+        <flowable:field name="wait" stringValue="true" />
+        <flowable:field name="outputVariable" stringValue="resultVar" />
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow sourceRef="ShellTask" targetRef="approveEnd"/>
 
     <endEvent id="approveEnd"/>
     <endEvent id="rejectEnd"/>
+    <endEvent id="HttpFailEnd"/>
 
   </process>
 
