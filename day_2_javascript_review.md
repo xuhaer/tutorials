@@ -29,17 +29,17 @@ x.style.color='red'
 
   ```js
   x = 5
-  == #等于 x==5 为true, x=='5'为true
-  === #全等(值、类型) x===5为true, x==='5'为false
+  == //等于 x==5 为true, x=='5'为true
+  === //全等(值、类型) x===5为true, x==='5'为false
   ```
   ​
 
 * 逻辑运算符
 
   ```js
-  && #and
-  || #or
-  ! #not
+  && //and
+  || //or
+  ! //not
   ```
 
 
@@ -59,14 +59,14 @@ x.style.color='red'
   var day=new Date().getDay();
   switch (day)
   {
-  case 0: # if day === 0
+  case 0: // if day === 0
     x="Today it's Sunday";
     break;
   case 6:
     x="Today it's Saturday";
     break
   default:
-    //case 0 和 case 1 均不满足时执行的代码
+    //case 0 和 case 6 均不满足时执行的代码
     x = "Today it's weekday"
   }
   ```

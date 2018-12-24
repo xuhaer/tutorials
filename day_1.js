@@ -22,7 +22,7 @@ console.log('abs: ' + abs(1,2,3));
 function foo() {
     var x = '变量提升: Hello, ' + y;
     console.log(x);//Hello, undefined
-    var y = 'Bob';
+    var y = 'Bob';// 若直接 y = 'Bob'则不会变量声明
 }
 // var y = 'Bob'; //如果放在这，注释掉上面 y的赋值，foo()不会报错
 foo();
