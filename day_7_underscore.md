@@ -138,7 +138,7 @@ _.range(0, 30, 5); // [0, 5, 10, 15, 20, 25]
   // 输出'Hello'
 
   var fn = s.trim;
-  fn(); //接调用fn()传入的this指针是undefined.
+  fn(); //直接调用fn()传入的this指针是undefined. Python中可以这样使用。
   // Uncaught TypeError: String.prototype.trim called on null or undefined
   ```
 
