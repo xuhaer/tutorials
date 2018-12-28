@@ -1,0 +1,17 @@
+{
+    "name": "hello-ws",
+    "version": "1.0.0",
+    "description": "Hello WebSocket example",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/xuhaer/node_js_tutorial"
+    },
+    "dependencies": {
+        "ws": "1.1.1"
+    }
+}
