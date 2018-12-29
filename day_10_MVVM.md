@@ -2,11 +2,11 @@
 
 
 
-**MVVM**
+#### MVVM
 
 MVVM最早由微软提出来，它借鉴了桌面应用程序的MVC思想，在前端页面中，把Model用纯JavaScript对象表示，View负责显示，两者做到了最大限度的分离。
 
-把Model和View关联起来的就是ViewModel。ViewModel负责把Model的数据同步到View显示出来，还负责把View的修改同步回Model。
+**把Model和View关联起来的就是ViewModel。ViewModel负责把Model的数据同步到View显示出来，还负责把View的修改同步回Model。**
 
 ViewModel如何编写？需要用JavaScript编写一个通用的ViewModel，这样，就可以复用整个MVVM模型了。
 
@@ -53,7 +53,7 @@ person.age = 51;
 
 
 
-MVVM就是在前端页面上，应用了扩展的MVC模式，我们关心Model的变化，MVVM框架自动把Model的变化映射到DOM结构上（可以使我们的代码更专注于处理业务逻辑而不是去关心 DOM 操作），这样，用户看到的页面内容就会随着Model的变化而更新。**
+**MVVM就是在前端页面上，应用了扩展的MVC模式，我们关心Model的变化，MVVM框架自动把Model的变化映射到DOM结构上（可以使我们的代码更专注于处理业务逻辑而不是去关心 DOM 操作），这样，用户看到的页面内容就会随着Model的变化而更新。**
 
 常用的MVVM框架有：[Angular](https://angularjs.org/)、[Backbone.js](http://backbonejs.org/)、[Ember](http://emberjs.com/)、[Vue.js](http://vuejs.org/)、[react](http://facebook.github.io/react/) 等
 

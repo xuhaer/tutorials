@@ -63,12 +63,7 @@ let fn = () => void doesNotReturn();
 箭头函数可以与变量解构结合使用。
 
 ```js
-const full = ({ first, last }) => first + ' ' + last;
-
-// 等同于
-function full(person) {
-  return person.first + ' ' + person.last;
-}
+let f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
 ```
 
 箭头函数使得表达更加简洁:
