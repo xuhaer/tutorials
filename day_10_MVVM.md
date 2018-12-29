@@ -57,5 +57,103 @@ person.age = 51;
 
 常用的MVVM框架有：[Angular](https://angularjs.org/)、[Backbone.js](http://backbonejs.org/)、[Ember](http://emberjs.com/)、[Vue.js](http://vuejs.org/)、[react](http://facebook.github.io/react/) 等
 
+Vue 示例:
+
+```html
+<head>
+<!-- 引用jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<!-- 引用Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+
+<script>
+// 初始化代码:
+$(function () {
+    var vm = new Vue({
+        el: '#vm',
+        //el指定了要把Model绑定到哪个DOM根节点上
+        data: {
+            name: 'Robot',
+            age: 15
+        }
+    });
+    window.vm = vm;
+});
+</script>
+</head>
+
+<body>
+    <div id="vm">
+        <p>Hello, {{ name }}!</p>
+        <p>You are {{ age }} years old!</p>
+    </div>
+</body>
+```
+#### 单向绑定
+
+打开浏览器console  执行 window.vm.name = 'Bob',Vue作为MVVM框架会自动监听Model的任何变化，在Model数据变化时，更新View的显示。这种Model到View的绑定我们称为单向绑定。
 
 
+
+在Vue中，可以直接写`{{ name }}`绑定某个属性。如果属性关联的是对象，还可以用多个`.`引用，例如，`{{ address.zipcode }}`。
+
+另一种单向绑定的方法是使用Vue的指令`v-text`，写法如下:
+
+```html
+<p>Hello, <span v-text="name"></span>!</p>
+```
+
+这种写法是把指令写在HTML节点的属性上，它会被Vue解析，该节点的文本内容会被绑定为Model的指定属性，注意不能再写双花括号`{{ }}`。
+
+#### 双向绑定
+
+单向绑定非常简单，就是把Model绑定到View，当我们用JavaScript代码更新Model时，View就会自动更新。
+
+有单向绑定，就有双向绑定。如果用户更新了View，Model的数据也自动被更新了，这种情况就是双向绑定。(填写表单就是一个最直接的例子)
+
+在Vue中，使用双向绑定非常容易，我们仍然先创建一个VM实例：略
+
+然后，编写一个HTML FORM表单，并用`v-model`指令把某个`<input>`和Model的某个属性作双向绑定：
+
+```html
+<form id="vm" action="#">
+    <p><input v-model="email"></p>
+    <p><input v-model="name"></p>
+</form>
+```
+
+双向绑定最大的好处是我们不再需要用jQuery去查询表单的状态，而是直接获得了用JavaScript对象表示的Model。
+
+#### 处理事件
+
+当用户提交表单时，传统的做法是响应`onsubmit`事件，用jQuery获取表单内容，检查输入是否有效，最后提交表单，或者用AJAX提交表单。
+
+现在，获取表单内容已经不需要了，因为双向绑定直接让我们获得了表单内容，并且获得了合适的数据类型。
+
+响应`onsubmit`事件也可以放到VM中。我们在`<form>`元素上使用指令:
+
+```html
+<form id="vm" v-on:submit.prevent="register">
+```
+
+其中，`v-on:submit="register"`指令就会自动监听表单的`submit`事件，并调用`register`方法处理该事件。使用`.prevent`表示阻止事件冒泡，这样，浏览器不再处理`<form>`的`submit`事件。
+
+因为我们指定了事件处理函数是`register`，所以需要在创建VM时添加一个`register`函数：
+
+```js
+var vm = new Vue({
+    el: '#vm',
+    data: {
+        ...
+    },
+    methods: {
+        register: function () {
+            // 显示JSON格式的Model:
+            alert(JSON.stringify(this.$data));
+            // TODO: AJAX POST...
+        }
+    }
+});
+```
+
+在`register()`函数内部，我们可以用AJAX把JSON格式的Model发送给服务器，就完成了用户注册的功能。
