@@ -74,7 +74,7 @@
       <extensionElements>
         <flowable:field name="command" stringValue="bash" />
         <!-- 可看到根路径创建了BashTaskDir文件夹 -->
-        <flowable:field name="arg1" stringValue="/Users/har/py/git/FlowableTutorial/BashTaskTest.sh"/>
+        <flowable:field name="arg1" stringValue="/Users/har/git/JavaTutorial/FlowableTutorial/BashTaskTest.sh"/>
         <flowable:field name="wait" stringValue="true" />
         <flowable:field name="outputVariable" stringValue="resultVar" />
       </extensionElements>
