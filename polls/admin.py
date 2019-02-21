@@ -1,5 +1,6 @@
 '''admin'''
 from django.contrib import admin
+
 from .models import Question, Choice
 
 # Register your models here.
@@ -13,7 +14,7 @@ class ChoiceInline(admin.TabularInline):
 class QuestionAdmin(admin.ModelAdmin):
     '''QuestionAdmin Model'''
     fieldsets = [
-        (None,               {'fields': ['question_text']}),
+        (None, {'fields': ['question_text']}),
         ('Date information', {'fields': ['pub_date']}),
     ]
     list_display = ('question_text', 'pub_date', 'was_published_recently')

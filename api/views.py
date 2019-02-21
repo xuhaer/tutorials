@@ -1,17 +1,13 @@
-from django.shortcuts import render
 
 # Create your views here.
-from api.models import Question, Choice
-from api.serializers import QuestionSerializer, ChoiceSerializer
-from django.contrib.auth.models import User
-from rest_framework import permissions
-
 
 from rest_framework import viewsets
-from rest_framework.decorators import action
-from rest_framework.response import Response
 from rest_framework import permissions
 from api.permissions import IsOwnerOrReadOnly
+from api.serializers import QuestionSerializer, ChoiceSerializer
+
+from polls.models import Question, Choice
+
 
 class QuestionViewSet(viewsets.ModelViewSet):
     """

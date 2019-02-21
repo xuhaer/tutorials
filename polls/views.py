@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+
 from .models import Question, Choice
 
 '''
@@ -17,7 +18,7 @@ from .models import Question, Choice
             fields = ['title', 'body', 'pub_date']
     默认的模板是model_name_form.html, 此例中即article_form.html。
     默认的context_object_name是form。
-    如果你不想使用默认的表单，你可以通过重写form_class来完成CreateView的自定义。虽然form_valid方法不是必需，但很有用。当用户提交的数据是有效的时候，你可以通过定义此方法做些别的事情，比如发送邮件，存取额外的数据。    
+    如果你不想使用默认的表单，你可以通过重写form_class来完成CreateView的自定义。虽然form_valid方法不是必需，但很有用。当用户提交的数据是有效的时候，你可以通过定义此方法做些别的事情，比如发送邮件，存取额外的数据。
 
 4.UpdateView:通过表单更新某个对象信息（比如修改密码，修改文字内容）- UpdateView
     UpdateView一般通过某个表单更新现有对象的信息，更新完成后会转到对象详细信息页面。它需要URL提供访问某个对象的具体参数（如pk, slug值）。比如一个最简单的文章更新的UpdateView如下所示。
