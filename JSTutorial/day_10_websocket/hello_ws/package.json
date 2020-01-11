@@ -12,6 +12,6 @@
         "url": "https://github.com/xuhaer/node_js_tutorial"
     },
     "dependencies": {
-        "ws": "1.1.1"
+        "ws": "7.2.1"
     }
 }
