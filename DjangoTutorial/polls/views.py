@@ -4,8 +4,10 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from django.db.models import F
 
 from .models import Question, Choice
+
 
 '''
 补充Edit view(CreateView、UpdateView、FormView、DeleteView)
@@ -118,7 +120,10 @@ def vote(request, question_id):
             'error_message': "You didn't select a choice.",
         })
     else:
-        selected_choice.votes += 1
+        # 如果网站有两个用户在同一时间投同一个票，
+        # selected_choice.votes += 1,这里会导致问题
+        # F() objects assigned to model fields persist after saving the model instance and will be applied on each save().
+        selected_choice.votes = F('votes') + 1
         selected_choice.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
