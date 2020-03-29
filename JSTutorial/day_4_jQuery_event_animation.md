@@ -37,7 +37,7 @@
 
   其中，`ready`仅作用于`document`对象。由于`ready`事件在DOM完成初始化后触发，且只触发一次，所以非常适合用来写其他的初始化代码。
 
-* 补充:`焦点`：使浏览器能够区分用户输入的对象，当一个元素有焦点的时候，那么他就可以接收用户的输入，只有能够响应用户操作额元素才可以接收焦点事件，比如：a button input...
+* 补充:`焦点`：使浏览器能够区分用户输入的对象，当一个元素有焦点的时候，那么他就可以接收用户的输入，只有能够响应用户操作的元素才可以接收焦点事件，比如：a、button、input...
 
   * onfocus：当元素获取到焦点的时候触发: [例子](https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onfocus)
 
@@ -166,7 +166,7 @@ jQuery内置的几种动画样式：
   }, 3000, function () {
       console.log('动画已结束');
       // 恢复至初始状态:
-      $(this).css('opacity', '1.0').css('width', '128px').css('height', '128px');
+      $(this).css({'opacity': '1.0', 'width': '128px', 'height': '128px'})
   });
   ```
 

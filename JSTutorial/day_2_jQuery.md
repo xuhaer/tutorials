@@ -63,9 +63,9 @@ jQuery的理念“Write Less, Do More“，让你写更少的代码，完成更�
   * 按属性查找
 
     ```js
-    var email = $('[name=email]'); // 找出<??? name="email">
-    var passwordInput = $('[type=password]'); // 找出<??? type="password">
-    var a = $('[items="A B"]'); // 找出<??? items="A B">
+    var email = $('[name=email]'); // 找出<xxx name="email">
+    var passwordInput = $('[type=password]'); // 找出<xxx type="password">
+    var a = $('[items="A B"]'); // 找出<xxx items="A B">
     ```
 
     当属性的值包含空格等特殊字符时，需要用双引号括起来。
@@ -97,8 +97,8 @@ jQuery的理念“Write Less, Do More“，让你写更少的代码，完成更�
 
     ```js
     //多项选择器就是把多个选择器用,组合起来一块选：
-    $('p,div'); // 把<p>和<div>都选出来
-    $('p.red,p.green'); // 把<p class="red">和<p class="green">都选出来
+    $('p,div'); // 把<p>或<div>都选出来
+    $('p.red,p.green'); // 把<p class="red">或<p class="green">都选出来
     ```
 
     要注意的是，选出来的元素是按照它们在HTML中出现的顺序排列的，而且不会有重复元素。例如，`<p class="red green">`不会被上面的`$('p.red,p.green')`选择两次。
@@ -167,7 +167,7 @@ jQuery的理念“Write Less, Do More“，让你写更少的代码，完成更�
   - `:checkbox`：可以选择复选框，和`input[type=checkbox]`一样；
   - `:radio`：可以选择单选框，和`input[type=radio]`一样；
   - `:focus`：可以选择当前输入焦点的元素，例如把光标放到一个`<input>`上，用`$('input:focus')`就可以选出；
-  - `:checked`：选择当前勾上的单选框和复选框，用这个选择器可以立刻获得用户选择的项目，如`$('input[type=radio]:checked')`；
+  - `:checked`：选择当前勾选上的单选框和复选框，用这个选择器可以立刻获得用户选择的项目，如`$('input[type=radio]:checked')`；
   - `:enabled`：可以选择可以正常输入的`<input>`、`<select>`等，也就是没有灰掉的输入；
   - `:disabled`：和`:enabled`正好相反，选择那些不能输入的。
 
