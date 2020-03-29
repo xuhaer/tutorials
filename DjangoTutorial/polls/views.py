@@ -10,8 +10,9 @@ from .models import Question, Choice
 
 
 '''
-补充Edit view(CreateView、UpdateView、FormView、DeleteView)
-重要：如果你要使用Edit view，请务必在模型models里定义get_absolute_url()方法，否则会出现错误。这是因为通用视图在对一个对象完成编辑后，需要一个返回链接。
+补充Editview(CreateView、UpdateView、FormView、DeleteView)
+重要：如果你要使用Editview，请务必在模型models里定义get_absolute_url()方法，
+否则会出现错误。这是因为通用视图在对一个对象完成编辑后，需要一个返回链接。
 
 3.CreateView:通过表单创建某个对象（比如创建用户，新建文章)
     一般通过某个表单创建某个对象，通常完成后会转到对象列表。比如一个最简单的文章创建CreateView可以写成:
@@ -20,10 +21,13 @@ from .models import Question, Choice
             fields = ['title', 'body', 'pub_date']
     默认的模板是model_name_form.html, 此例中即article_form.html。
     默认的context_object_name是form。
-    如果你不想使用默认的表单，你可以通过重写form_class来完成CreateView的自定义。虽然form_valid方法不是必需，但很有用。当用户提交的数据是有效的时候，你可以通过定义此方法做些别的事情，比如发送邮件，存取额外的数据。
+    如果你不想使用默认的表单，你可以通过重写form_class来完成CreateView的自定义。
+    虽然form_valid方法不是必需，但很有用。当用户提交的数据是有效的时候，你可以通过定义此方法做些别的事情，
+    比如发送邮件，存取额外的数据。
 
 4.UpdateView:通过表单更新某个对象信息（比如修改密码，修改文字内容）- UpdateView
-    UpdateView一般通过某个表单更新现有对象的信息，更新完成后会转到对象详细信息页面。它需要URL提供访问某个对象的具体参数（如pk, slug值）。比如一个最简单的文章更新的UpdateView如下所示。
+    UpdateView一般通过某个表单更新现有对象的信息，更新完成后会转到对象详细信息页面。
+    它需要URL提供访问某个对象的具体参数（如pk, slug值）。比如一个最简单的文章更新的UpdateView如下所示。
         class ArticleUpdateView(UpdateView):
             model = Article
         fields = ['title', 'body', 'pub_date']
@@ -32,7 +36,9 @@ from .models import Question, Choice
         * 用户提交表单后，CreateView转向对象列表，UpdateView转向对象详细信息页面。
 
 5.FormView:用户填写表单后转到某个完成页面 - FormView
-    FormView一般用来展示某个表单，而不是某个模型对象。当用户输入信息未通过表单验证，显示错误信息。当用户输入信息通过表单验证提交成功后，转到其它页面。使用FormView一般需要定义template_name, form_class和跳转的success_url:
+    FormView一般用来展示某个表单，而不是某个模型对象。当用户输入信息未通过表单验证，显示错误信息。
+    当用户输入信息通过表单验证提交成功后，转到其它页面。使用FormView一般需要定义template_name,
+    form_class和跳转的success_url:
         class ContactView(FormView):
             template_name = 'contact.html'
             form_class = ContactForm
@@ -48,6 +54,10 @@ from .models import Question, Choice
     DeleteView一般用来删除某个具体对象。它要求用户点击确认后再删除一个对象。
     使用这个通用视图，你需要定义模型的名称model和成功删除对象后的返回的URL。
     默认模板是myapp/model_confirm_delete.html。默认内容对象名字是model_name,本例中为article。
+    reverse_lazy:
+        It is useful for when you need to use a URL reversal before
+        your project’s URLConf is loaded.
+
     class ArticleDeleteView(DeleteView):
         model = Article
         success_url = reverse_lazy('index') #删除文章后通过reverse_lazy方法返回到index页面。

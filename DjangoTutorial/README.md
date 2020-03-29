@@ -5,6 +5,10 @@
 null=True sets NULL (versus NOT NULL) on the column in your DB. Blank values for Django field types such as DateTimeField or ForeignKey will be stored as NULL in the DB.
 
 blank=True determines whether the field will be required in forms. This includes the admin and your own custom forms. If blank=True then the field will not be required, whereas if it's False the field cannot be blank.
+也就是说：
+- null 是针对数据库而言，如果 null=True, 表示数据库的该字段可以为空。
+- blank 是针对表单的，如果 blank=True，表示你的表单填写该字段的时候可以不填
+
 ```Python
 class Test(models.Model):
     charNull        = models.CharField(max_length=10, null=True)
@@ -19,10 +23,12 @@ class Test(models.Model):
     dateBlank       = models.DateTimeField(blank=True)
     dateNullBlank   = models.DateTimeField(null=True, blank=True)   
 ```
+
 The database fields created for MySQL 5.6 are :
+
 ```sql
 CREATE TABLE Test (
-     `id`            INT(11)     r    AUTO_INCREMENT,
+     `id`            INT(11)          AUTO_INCREMENT,
      `charNull`      VARCHAR(10) NULL DEFAULT NULL,
      `charBlank`     VARCHAR(10) NOT  NULL,
      `charNullBlank` VARCHAR(10) NULL DEFAULT NULL,
@@ -38,7 +44,7 @@ CREATE TABLE Test (
 ```
 
 ## 执行查询
-一旦创建 数据模型 后，Django 自动给予你一套数据库抽象 API，允许你创建，检索，更新和删除对象。本页介绍如何使用这些 API。参考 数据模型参考 获取所有查询选项的完整细节。
+一旦创建 数据模型 后，Django 自动给予你一套数据库抽象 API，允许你创建、检索、更新和删除对象。本页介绍如何使用这些 API。参考 数据模型参考 获取所有查询选项的完整细节。
 
 
 ### 缓存和QuerySet
@@ -56,7 +62,7 @@ CREATE TABLE Test (
 ```
 
 **当 QuerySet 未被缓存时**
-查询结果集并不总是缓存结果。当仅计算查询结果集的部分时，会校验缓存，若没有填充缓存，则后续查询返回的项目不会被缓存。特别地说，这意味着使用数组切片或索引的 限制查询结果集 不会填充缓存。
+查询结果集并不总是缓存结果。当仅计算查询结果集的部分时，会校验缓存，若没有填充缓存，则后续查询返回的项目不会被缓存。特别地说，这意味着使用数组切片或索引的限制查询结果集不会填充缓存。
 例如，重复的从某个查询结果集对象中取指定索引的对象会每次都查询数据库:
 ```Python
 >>> queryset = Entry.objects.all()
